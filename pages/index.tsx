@@ -1,7 +1,8 @@
 import type { NextPage } from "next";
 import { lazy, Suspense } from "react";
-import Spinner from "../src/components/spinner";
-import ContentPage from "./contents";
+import Spinner from "./spinner";
+import ToDoInputPage from "./todoInput";
+import ToDoListPage from "./todoList";
 
 // const ContentsPage = lazy(() => import("./contents"));
 // const ContentsPage = dynamic(() => import("./contents"), { suspense: true });
@@ -12,10 +13,10 @@ const Home: NextPage = () => {
   return (
     <>
       <main className="p-20 border-2 container bg-green-300">
-        <div className="text-red-700 ">1000</div>
-
+        <h1 className="text-6xl text-red-500">TODO</h1>
+        <ToDoInputPage />
         <Suspense fallback={<Spinner />}>
-          <ContentPage />
+          <ToDoListPage />
         </Suspense>
       </main>
     </>
