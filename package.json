@@ -5,11 +5,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "relay": "relay-compiler"
   },
   "relay": {
     "src": "./src/",
-    "schema": "./schema.graphql"
+    "schema": "./schema.graphql",
+    "exclude": [
+      "**/node_modules/**",
+      "**/__mocks__/**",
+      "**/__generated__/**"
+    ],
+    "language": "typescript"
   },
   "dependencies": {
     "@headlessui/react": "^1.4.2",
@@ -19,11 +26,13 @@
     "react": "^18.0.0-rc.0",
     "react-dom": "^18.0.0-rc.0",
     "react-relay": "^13.0.1",
+    "relay-nextjs": "^0.5.1",
     "relay-runtime": "^13.0.1"
   },
   "devDependencies": {
     "@types/node": "17.0.8",
     "@types/react": "17.0.38",
+    "@types/react-relay": "^13.0.0",
     "@types/relay-runtime": "^13.0.0",
     "autoprefixer": "^10.4.2",
     "babel-plugin-relay": "^13.0.1",
