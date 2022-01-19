@@ -1,13 +1,19 @@
 import type { NextPage } from "next";
+import { useEffect, useState } from "react";
+import {
+  GoogleReCaptcha,
+  GoogleReCaptchaProvider,
+} from "react-google-recaptcha-v3";
 
 const ToDoInput: NextPage = () => {
-  /* This example requires Tailwind CSS v2.0+ */
-  // https://api.mocki.io/v2/c4d7a195/graphql
+  const [token, setToken] = useState();
   return (
     <article className="my-10">
       <div className="text-red-400 text-3xl">
         <input placeholder="what to do?" className="px-4 py-10"></input>
       </div>
+
+      <GoogleReCaptcha onVerify={token} />
     </article>
   );
 };
