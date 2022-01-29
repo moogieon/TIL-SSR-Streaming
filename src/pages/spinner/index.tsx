@@ -7,6 +7,14 @@ const Spinner: NextPage = () => {
   return (
     <>
       <div>로딩중 뱅글</div>
+      <div className="text-2xl">map 테스트</div>
+      <div>로딩중 뱅글 햣 </div>
+      <div>로딩중 뱅글 햣 </div>
+      <div>로딩중 뱅글 햣 </div>
+      <div>로딩중 뱅글 햣 </div>
+      <div>로딩중 뱅글 햣 </div>
+      <div>로딩중 뱅글 햣 </div>
+      <div>로딩중 뱅글 햣 </div>
     </>
   );
 };
