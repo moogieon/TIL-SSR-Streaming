@@ -15,6 +15,17 @@ const Spinner: NextPage = () => {
       <div>로딩중 뱅글 햣 </div>
       <div>로딩중 뱅글 햣 </div>
       <div>로딩중 뱅글 햣 </div>
+      <div>로딩중 뱅글 햣 </div>
+      <div>로딩중 뱅글 햣 </div>
+      <div>로딩중 뱅글 햣 </div>
+      <div>로딩중 뱅글 햣 </div>
+      <div>로딩중 뱅글 햣 </div>
+      <div>로딩중 뱅글 햣 </div>
+      <div>로딩중 뱅글 햣 </div>
+      <div>로딩중 뱅글 햣 </div>
+      <div>로딩중 뱅글 햣 </div>
+      <div>로딩중 뱅글 햣 </div>
+      <div>로딩중 뱅글 햣 </div>
     </>
   );
 };
