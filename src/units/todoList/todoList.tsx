@@ -27,23 +27,23 @@ const ToDoList: FC<Props> = ({ fragment }) => {
     const projection = geoMercator();
     const pathGenerator = geoPath().projection(projection);
 
-    json("/Users/cmlee/Desktop/personal/til-suspense/src/pages/mapTest/GeoChart.world.geo.json").then(
-      (data) => {
-        // Convert topoJSON to geoJSON
-        const countries = feature(data, data.objects.countries);
- console.log(countries)
-        // Join data and draw svg path
-        svg
-          .selectAll("path")
-          .data(countries.features)
-          .enter()
-          .append("path")
-          .attr('class', 'country')
-          .attr("d", pathGenerator)
-          .append('title')
-          .attr("class", "country");
-      }
-    );
+    json(
+      "/Users/cmlee/Desktop/personal/til-suspense/src/pages/mapTest/GeoChart.world.geo.json"
+    ).then((data) => {
+      // Convert topoJSON to geoJSON
+      const countries = feature(data, data.objects.countries);
+      console.log(countries);
+      // Join data and draw svg path
+      svg
+        .selectAll("path")
+        .data(countries.features)
+        .enter()
+        .append("path")
+        .attr("class", "country")
+        .attr("d", pathGenerator)
+        .append("title")
+        .attr("class", "country");
+    });
   }, [data]);
 
   return (
@@ -70,7 +70,7 @@ const ToDoList: FC<Props> = ({ fragment }) => {
           />
         </div>
       </div>
-<<<<<<< Updated upstream
+
       <div className="text-red-400 text-3xl">List</div>
       <div>
         <div className="mt-3 flex -space-x-2 overflow-hidden">
@@ -136,10 +136,6 @@ const ToDoList: FC<Props> = ({ fragment }) => {
             alt=""
           />
         </div>
-=======
-      <div ref={wrapperRef} className="mb-2">
-        <svg ref={svgRef}></svg>
->>>>>>> Stashed changes
       </div>
     </article>
   );
