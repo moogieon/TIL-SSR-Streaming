@@ -1,10 +1,35 @@
 import { FC, useEffect, useRef, useState } from "react";
-import useScrollFadeIn from "../../components/useScrollFadeIn";
 
 export interface Props {}
 
 const GraphTest: FC<Props> = () => {
-  const animatedItem = useScrollFadeIn();
+  const container = document.querySelector(".container");
+  const wrappers = document.querySelectorAll(".wrapper");
+  const imgs = document.querySelectorAll("img");
+  const animClasses = ["fadeInLeft", "fadeInRight", "fadeInBtm", "zoomIn"];
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        const currentIndex = Array.from(wrappers).indexOf(entry.target);
+        if (entry.isIntersecting) {
+          imgs[currentIndex].classList.add(animClasses[currentIndex]);
+        } else {
+          if (entry.boundingClientRect.y > 0) {
+            imgs[currentIndex].classList.remove(animClasses[currentIndex]);
+          }
+        }
+      });
+    },
+    {
+      root: container,
+      threshold: 0.1,
+    }
+  );
+
+  wrappers.forEach((wrapper) => {
+    observer.observe(wrapper);
+  });
+
   return (
     <>
       <div className="flex flex-col  items-center">
@@ -19,7 +44,7 @@ const GraphTest: FC<Props> = () => {
           <div></div>
           <div>
             <ul>
-              <li className="mb-10">Num</li>
+              <li className="mb-10"></li>
               <li className="mb-10">etc</li>
               <li className="mb-10">Str</li>
             </ul>
