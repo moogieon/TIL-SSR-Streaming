@@ -30,6 +30,12 @@ const GraphTest: FC<Props> = () => {
     observer.observe(wrapper);
   });
 
+  const myData = [
+    { id: "0", name: "일번" },
+    { id: "1", name: "이번" },
+    { id: "2", name: "삼번" },
+  ];
+
   return (
     <>
       <div className="flex flex-col  items-center">
