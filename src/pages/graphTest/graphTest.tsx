@@ -31,9 +31,9 @@ const GraphTest: FC<Props> = () => {
   });
 
   const myData = [
-    { id: "0", name: "일번" },
-    { id: "1", name: "이번" },
-    { id: "2", name: "삼번" },
+    { id: "0", name: "일번", contents: "noname" },
+    { id: "1", name: "이번", contents: "noname" },
+    { id: "2", name: "삼번", contents: "noname" },
   ];
 
   return (
@@ -108,6 +108,11 @@ const GraphTest: FC<Props> = () => {
             src="/01_메인_핸드폰목업1.png"
           />
         </div>
+        <ul>
+          {myData.map((data, idx) => (
+            <li key={idx}>{data}</li>
+          ))}
+        </ul>
       </div>
     </>
   );
