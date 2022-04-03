@@ -10,6 +10,7 @@ import { RelayProps, withRelay } from "relay-nextjs";
 import { graphql } from "relay-runtime";
 import useScrollFadeIn from "../components/hooks/useScrollFadeIn";
 import { getClientEnvironment } from "../lib/clientEnvironment";
+import DndTest from "./dnd";
 import GraphTest from "./graphTest/graphTest";
 import Spinner from "./spinner";
 import ToDoInputPage from "./todoInput";
@@ -33,7 +34,8 @@ const Home: NextPage<RelayProps<{}, pagesQueryType>> = ({ preloadedQuery }) => {
 
   return (
     <>
-      <GraphTest />
+      {/* <GraphTest /> */}
+      <DndTest />
 
       {/* <main className="p-20 border-2 container bg-green-300">
         <h1 className="text-6xl text-red-500">TODO</h1>
