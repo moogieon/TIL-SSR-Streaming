@@ -3,33 +3,6 @@ import { FC, useEffect, useRef, useState } from "react";
 export interface Props {}
 
 const GraphTest: FC<Props> = () => {
-  const container = document.querySelector(".container");
-  const wrappers = document.querySelectorAll(".wrapper");
-  const imgs = document.querySelectorAll("img");
-  const animClasses = ["fadeInLeft", "fadeInRight", "fadeInBtm", "zoomIn"];
-  const observer = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        const currentIndex = Array.from(wrappers).indexOf(entry.target);
-        if (entry.isIntersecting) {
-          imgs[currentIndex].classList.add(animClasses[currentIndex]);
-        } else {
-          if (entry.boundingClientRect.y > 0) {
-            imgs[currentIndex].classList.remove(animClasses[currentIndex]);
-          }
-        }
-      });
-    },
-    {
-      root: container,
-      threshold: 0.1,
-    }
-  );
-
-  wrappers.forEach((wrapper) => {
-    observer.observe(wrapper);
-  });
-
   const myData = [
     { id: "0", name: "일번", contents: "noname" },
     { id: "1", name: "이번", contents: "noname" },
@@ -56,63 +29,6 @@ const GraphTest: FC<Props> = () => {
             </ul>
           </div>
         </div>
-      </div>
-      <div className="h-[1200px] w-30 border-2 p-10 flex justify-center items-center">
-        <div className="">
-          <h1 className="text-2xl">건강건강</h1>
-          <span className="text-2xl">웰코치가 책임</span>
-          <h1 className="text-2xl">건강건강</h1>
-        </div>
-        <div className="">
-          <img
-            className="mx-auto h-[50%] w-[80%]"
-            src="/01_메인_핸드폰목업1.png"
-          />
-        </div>
-      </div>
-      <div className="h-[1200px] w-30 border-2 p-10 flex justify-center items-center">
-        <div className="">
-          <h1 className="text-2xl">건강건강</h1>
-          <span className="text-2xl">웰코치가 책임</span>
-          <h1 className="text-2xl">건강건강</h1>
-        </div>
-        <div className="">
-          <img
-            className="mx-auto h-[50%] w-[80%]"
-            src="/01_메인_핸드폰목업1.png"
-          />
-        </div>
-      </div>
-      <div className="h-[1200px] w-30 border-2 p-10 flex justify-center items-center">
-        <div className="">
-          <h1 className="text-2xl">건강건강</h1>
-          <span className="text-2xl">웰코치가 책임</span>
-          <h1 className="text-2xl">건강건강</h1>
-        </div>
-        <div className="">
-          <img
-            className="mx-auto h-[50%] w-[80%]"
-            src="/01_메인_핸드폰목업1.png"
-          />
-        </div>
-      </div>
-      <div className="h-[1200px] w-30 border-2 p-10 flex justify-center items-center">
-        <div className="">
-          <h1 className="text-2xl">건강건강</h1>
-          <span className="text-2xl">웰코치가 책임</span>
-          <h1 className="text-2xl">건강건강</h1>
-        </div>
-        <div className="">
-          <img
-            className="mx-auto h-[50%] w-[80%]"
-            src="/01_메인_핸드폰목업1.png"
-          />
-        </div>
-        <ul>
-          {myData.map((data, idx) => (
-            <li key={idx}>{data}</li>
-          ))}
-        </ul>
       </div>
     </>
   );

@@ -34,16 +34,15 @@ const Home: NextPage<RelayProps<{}, pagesQueryType>> = ({ preloadedQuery }) => {
 
   return (
     <>
-      {/* <GraphTest /> */}
+      <GraphTest />
       <DndTest />
-
-      {/* <main className="p-20 border-2 container bg-green-300">
+      <main className="p-20 border-2 container bg-green-300">
         <h1 className="text-6xl text-red-500">TODO</h1>
         <ToDoInputPage />
-        <Suspense fallback={<Spinner />}>
+        {/* <Suspense fallback={<Spinner />}>
           <ToDoListPage fragment={data.viewer} />
-        </Suspense>
-      </main> */}
+        </Suspense> */}
+      </main>
     </>
   );
 };
