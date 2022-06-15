@@ -1,0 +1,231 @@
+---
+const menu = [
+  { name: '검진상품 선택', dataTab: 'tab1' },
+  { name: '검사소 찾기', dataTab: 'tab2' },
+  { name: '검사소 방문', dataTab: 'tab3' },
+  { name: '검진 리포트 확인', dataTab: 'tab4' },
+]
+
+const menualList = [
+  {
+    id: 'tab1',
+    title: '검진상품 선택',
+    content: '메인 페이지에서 검진 상품을 선택하세요.',
+    subContent: '※ 구매 하신 분에게는 확인 문자를 전송해 드립니다.',
+    class: 'active tab_content',
+  },
+  {
+    id: 'tab2',
+    title: '가까운 검사소를 찾기',
+    content: '상단 메뉴 검사소 찾기를 선택하세요.',
+    subContent: '※ 우편번호(Zip Code)를 입력하세요.',
+    class: 'tab_content',
+  },
+  {
+    id: 'tab3',
+    title: '검사소 방문하기',
+    content: '검사소 방문 전 안내문자를 꼭 확인하세요.',
+    subContent: '※ 예약 없이도 방문이 가능합니다.',
+    class: ' tab_content',
+  },
+  {
+    id: 'tab4',
+    title: '검사 리포트 확인하기',
+    content: '마이페이지에서 검진 결과를\n확인하실 수 있습니다.',
+    subContent: '※ 검사 결과 발행 안내 문자를 보내드립니다.',
+    class: ' tab_content',
+  },
+]
+---
+
+<section w-flex="~ col" w-w="full" w-h="full" w-bg="[#F7F7F780]">
+  <div
+    w-p="<lg:x-1/20"
+    w-m="x-auto t-85px "
+    w-container="~"
+    w-h="full"
+    w-w="96rem"
+    w-z="40"
+    w-flex="~ col"
+    class="wrapper"
+  >
+    <ul
+      w-flex="~"
+      w-justify="between"
+      w-gap="10"
+      w-w-="full"
+      w-text="1.5rem"
+      w-pos="relative"
+      w-p="x-15"
+    >
+      {menu.map((data, idx) => (
+        <li
+          data-tab={data.dataTab}
+          class="tab active"
+          w-p="b-2"
+          w-text="1.5rem"
+          w-cursor="pointer"
+          w-transition="duration-100"
+        >
+          <span w-font="italic" w-m="r-2" w-text="1.563rem">
+            {idx + 1 + '.'}
+          </span>
+          {data.name}
+        </li>
+      ))}
+      <hr w-pos="absolute bottom-0 left-0 right-0" w-w="full" w-h="1px" />
+      <div
+        class="slider"
+        w-pos="absolute -bottom-1 left-0"
+        w-w="24rem"
+        w-h="1"
+        w-bg="black"
+      >
+      </div>
+    </ul>
+    <div
+      w-border="1px blue-500"
+      w-h=" 66.1rem"
+      w-overflow="x-hidden"
+      w-w="full"
+    >
+      <ul
+        w-class="tab_slider"
+        w-w="full"
+        w-pos="relative "
+        w-z="10"
+        w-whitespace="nowrap"
+      >
+        {menualList.map((data, idx) => (
+          <li
+            id={data.id}
+            class={data.class}
+            w-display="inline-block"
+            w-pos="relative"
+            w-w="full"
+            w-h-="full"
+          >
+            <p
+              w-text="3.75rem [#CCCCCC]"
+              w-font="italic bold"
+              w-m="b-32px y-80px"
+            >
+              Step {idx + 1 + '.'}
+            </p>
+            <div
+              class="scroller"
+              w-overflow="hidden"
+              w-pos="relative"
+              w-border="1px black"
+              w-display="inline-block"
+            >
+              <p
+                class="fade-in-box "
+                w-text="3.75rem [#CCCCCC] <lg:2rem"
+                w-font="italic bold"
+                w-duration="700"
+              >
+                Step {idx + 1 + '.'}
+              </p>
+            </div>
+            <p w-text="3.375rem" w-m="b-13px" w-font="bold">
+              {data.title}
+            </p>
+            <p w-text="2.125rem" w-m="b-50px" w-whitespace="pre-line">
+              {data.content}
+            </p>
+            <p w-text="1.563rem" w-m="b-30px">
+              {data.subContent}
+            </p>
+            <button
+              w-text="1.25rem [#707070]"
+              w-border="1px [#707070] rounded-3xl"
+              w-p="x-6 y-2"
+            >
+              자세히보기
+            </button>
+            <div
+              w-w="4/10"
+              w-h="full"
+              w-bg="white"
+              w-pos="absolute top-0 right-0"
+            ></div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+<script>
+  const tabs = document.querySelector('.wrapper')
+  const tabButton = document.querySelectorAll('.tab')
+  const slideBar = document.querySelectorAll('.slider')
+  const contents = document.querySelectorAll('.tab_content')
+
+  tabs.onclick = (e) => {
+    const id = e.target.dataset.tab
+
+    if (id) {
+      tabButton.forEach((btn) => {
+        btn.classList.remove('active')
+      })
+      e.target.classList.add('active')
+
+      contents.forEach((content) => {
+        content.classList.remove('active')
+      })
+      const element = document.getElementById(id)
+      element.classList.add('active')
+    }
+  }
+</script>
+
+<style>
+  .tab_slider {
+    transition: 0.3s ease-out;
+  }
+  .tab.active {
+  }
+  .tab_content {
+    transform: translateX(-96rem);
+    transition: 0.3s ease-out;
+  }
+  /* 
+  .tab_content.active {
+    display: block;
+  } */
+  .slider {
+    left: 0rem;
+  }
+  .slider2 {
+    left: 24rem;
+  }
+  .slider3 {
+    left: 48rem;
+  }
+  .slider4 {
+    left: 62rem;
+  }
+
+  .fade-in-box {
+    animation: fadein 1s;
+    will-change: transform;
+    transition-property: transform;
+    transition-delay: 0.5s;
+  }
+  .fade-in-box.active {
+    display: block;
+    /* display: inline-block;
+    background: yellow;
+    padding: 10px;
+    animation: fadein 5s; */
+  }
+  @keyframes fadein {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0%);
+    }
+  }
+</style>

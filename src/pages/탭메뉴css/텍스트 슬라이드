@@ -1,0 +1,38 @@
+ const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          target.style.transform = 'translateY(0%)'
+          console.log('ddd', target)
+        } else {
+          target.style.transform = 'translateY(100%)'
+        }
+      })
+    },
+    {
+      root: null,
+    }
+  )
+
+  observer.observe(target)
+
+  <div
+              class="scroller"
+              w-overflow="hidden"
+              w-pos="relative"
+              w-border="1px black"
+              w-display="inline-block"
+            >
+              <p
+                class="fade-in-box "
+                w-text="3.75rem [#CCCCCC] <lg:2rem"
+                w-font="italic bold"
+                w-duration="500"
+              >
+                Step {idx + 1 + '.'}
+              </p>
+            </div>
+  .fade-in-box {
+    transform: translateY(100%);
+    transition-delay: 0.5s;
+  }
