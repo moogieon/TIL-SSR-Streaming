@@ -35,28 +35,8 @@ const MapTest: FC<Props> = () => {
   return (
     <>
       <div className="flex flex-col  items-center">
-        {/* <div style={{ marginBottom: "2rem" }} className="m-auto container h-1">
+        <div style={{ marginBottom: "2rem" }} className="m-auto container h-1">
           <svg ref={svgRef} className="relative"></svg>
-          <div className="border h-20 w-20 bg-blue-400 absolute top-0">
-            호도자도
-          </div>
-        </div> */}
-        <div className="border h-120 w-80 flex justify-between">
-          <div>
-            <ul>
-              <li className="mb-10">123</li>
-              <li className="mb-10">asd</li>
-              <li className="mb-10">!@#</li>
-            </ul>
-          </div>
-          <div></div>
-          <div>
-            <ul>
-              <li className="mb-10">Num</li>
-              <li className="mb-10">etc</li>
-              <li className="mb-10">Str</li>
-            </ul>
-          </div>
         </div>
       </div>
     </>

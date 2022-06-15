@@ -12,6 +12,7 @@ import useScrollFadeIn from "../components/hooks/useScrollFadeIn";
 import { getClientEnvironment } from "../lib/clientEnvironment";
 import DndTest from "./dnd";
 import GraphTest from "./graphTest/graphTest";
+import MapTest from "./mapTest/mapTest";
 import Spinner from "./spinner";
 import ToDoInputPage from "./todoInput";
 import ToDoListPage from "./todoList";
@@ -36,13 +37,12 @@ const Home: NextPage<RelayProps<{}, pagesQueryType>> = ({ preloadedQuery }) => {
     <>
       <GraphTest />
       <DndTest />
-      <main className="p-20 border-2 container bg-green-300">
-        <h1 className="text-6xl text-red-500">TODO</h1>
-        <ToDoInputPage />
-        {/* <Suspense fallback={<Spinner />}>
+      <MapTest />
+
+      {/* <ToDoInputPage /> */}
+      {/* <Suspense fallback={<Spinner />}>
           <ToDoListPage fragment={data.viewer} />
         </Suspense> */}
-      </main>
     </>
   );
 };
