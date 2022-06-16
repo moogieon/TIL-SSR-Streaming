@@ -1,0 +1,189 @@
+---
+import Buy from '../../../styles/menual/buy.png'
+import Message from '../../../styles/menual/message.png'
+import Visit from '../../../styles/menual/visit.png'
+import Result from '../../../styles/menual/result.png'
+
+const menualList = [
+  { name: '검진상품\n선택 및 구매하기', img: Buy },
+  {
+    name: '안내 문자 확인',
+    subName: '(휴대폰, e-mail)',
+    img: Message,
+  },
+  { name: '검사소\n방문하기', img: Visit },
+  { name: '검사 결과\n확인하기', img: Result },
+]
+
+const menuDetail = [
+  {
+    title: '검진상품 선택 및 구매하기',
+    list: [
+      '관련 증상이나 질환을 참고로 검진 상품을 선택하세요. (예시:당뇨, 빈혈 등)',
+      '상품 상세페이지에서 희망하는 검사소 지역을 참고하세요',
+    ],
+  },
+  {
+    subName: '(휴대폰, e-mail)',
+    title: '안내 문자 확인(휴대폰, e-mail)',
+    list: [
+      '추가 내용 확인 필요 : 영수증, 바우처, 검사 시 주의 사항, 검사소 위치 설명, e티켓 등',
+      '검사소 찾기 : e 티켓 넘버와 함께 가까운 검사소 정보를 문자로 안내해드립니다.\n보다 많은 검사소 위치는 Labcorp 공식 사이트에서도 확인하실 수 있습니다.(미국내 2,000여개)',
+    ],
+  },
+  {
+    title: '검사소 방문하기',
+    list: [
+      '원하시는 날짜, 시간 및 검사소를 방문하시면 기다리지 않고 검사를 진행하실 수 있습니다. (상세페이지에 운영시간 및 가까운 검사소 위치를 확인하세요.)\n단, 예약을 원하실 경우 Labcorp 공식 사이트에서 가능합니다. (한국어 안내: 링크)',
+      '방문 하신 검사소의 키오스크(무인단말기)에 이름과 e 티켓 넘버 기입 및 각종 동의서 서명',
+      '고객 이름 호명 후 현장 직원의 안내에 따라 채혈 후 귀가',
+    ],
+  },
+  {
+    title: '검사결과 확인하기',
+    list: [
+      '휴대폰 문자 안내에 따라 웰코치몰에서 검진 결과 리포트 확인하기',
+      '검진결과가 반영된 맞춤 영양관리 시작하기',
+    ],
+  },
+]
+---
+
+<section w-flex="~ col" w-items="between" w-w="full" w-h="full">
+  <div
+    w-p="<lg:x-1/20"
+    w-m="x-auto t-85px"
+    w-container="~"
+    w-h="<md:full"
+    w-z="40"
+    w-flex="~ col"
+    w-justify="<md:center"
+  >
+    <div w-w="full">
+      <ol
+        class="menu-wrap"
+        w-grid="~ cols-4"
+        w-gap="20 <xl:10 <lg:5 "
+        w-p="t-10 b-15"
+      >
+        {menualList.map((menu) => (
+          <li
+            class="out"
+            w-cursor="pointer"
+            w-flex="~ col"
+            w-justify="between"
+            w-items="center"
+            w-h="min-269px"
+            w-transition="duration-100"
+            w-shadow="custom"
+            w-p="x-1/10 y-10 "
+          >
+            <img
+              src={menu.img}
+              w-h="101px"
+              w-p="x-20 <2xl:x-15 <2xl:y-2 <xl:x-10 <lg:5"
+            />
+            <p
+              w-text="1.375rem center <lg:1rem"
+              w-font="!leading-[1.3]"
+              w-w="max-152px"
+              w-whitespace="pre-line"
+              w-h="max-80px"
+              w-m="t-5 <lg:t-2"
+            >
+              {menu.name}
+              <span w-text="1.125rem <lg:0.75rem">{menu.subName}</span>
+            </p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+  <div w-bg="[#F7F7F780]" w-w="full" w-h="full" w-p="y-10">
+    <div w-m="x-auto" w-container="~" w-h="full" w-pos="relative">
+      <ol class="detail-wrap" w-flex="~ col" w-justify="between" w-h="full">
+        {menuDetail.map((detail, i) => (
+          <li w-flex="~" w-items="center" w-h="min-105px" w-m="b-5">
+            <div
+              w-text="2.5rem [#6E6E6E]"
+              w-w="min-26px"
+              w-transition="duration-100"
+            >
+              {i + 1}
+            </div>
+            <div
+              w-border="1px [#6E6E6E] rounded-xl"
+              w-flex="~"
+              w-h="full"
+              w-m="x-10"
+              w-transition="duration-100"
+            />
+            <div w-flex="~ col" w-justify="between" w-h="full" w-p="y-2">
+              <p w-text="1.375rem" w-font="bold">
+                {detail.title}
+              </p>
+              <ul>
+                {detail.list.map((list) => (
+                  <li
+                    w-whitespace="pre-line"
+                    w-p="<xl:r-10"
+                    w-transition="duration-100"
+                  >
+                    - {list}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>
+<script>
+  const menuWrap = document.querySelector('.menu-wrap')
+  const detailWrap = document.querySelector('.detail-wrap')
+
+  const selectMenu = (ulEl, liEl) => {
+    Array.from(ulEl.children).forEach((v) => v.classList.remove('selected'))
+    if (liEl) liEl.classList.add('selected')
+  }
+
+  menuWrap.addEventListener('click', (e) => {
+    const selected = e.target
+    selectMenu(menuWrap, selected)
+    const num = [...selected.parentElement.children]
+    const index = num.indexOf(selected)
+    Array.from(detailWrap.children).forEach((v) =>
+      v.classList.remove('selected-detail')
+    )
+    if (num.length >= 4)
+      detailWrap.children[index].classList.add('selected-detail')
+    console.log(num.classList.contains('.out'))
+  })
+</script>
+
+<style>
+  .out:hover {
+    outline: 3px solid #33333399;
+    outline-offset: -3px;
+  }
+  .menu-wrap li > * {
+    pointer-events: none;
+  }
+  .menu-wrap li.selected {
+    outline: 3px solid #33333399;
+    outline-offset: -3px;
+  }
+  .selected-detail div:nth-child(1) {
+    color: black;
+  }
+  .selected-detail div:nth-child(2) {
+    border-width: 2px;
+    border-color: black;
+  }
+  .selected-detail ul li {
+    color: black;
+    font-weight: 600;
+  }
+</style>
