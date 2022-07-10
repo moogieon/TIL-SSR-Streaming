@@ -1,0 +1,235 @@
+---
+import selectItems from '../../styles/menual/selectItems.mp4'
+import searchOffice from '../../styles/menual/searchOffice.mp4'
+import visitOffice from '../../styles/menual/visitOffice.mp4'
+const menu = [
+  { name: '검진상품 선택', dataTab: 'tab1' },
+  { name: '검사소 찾기', dataTab: 'tab2' },
+  { name: '검사소 방문', dataTab: 'tab3' },
+  { name: '검진 리포트 확인', dataTab: 'tab4' },
+]
+
+const menualList = [
+  {
+    id: 'tab1',
+    title: '검진상품 선택',
+    content: '메인 페이지에서 검진 상품을 선택하세요.',
+    subContent: '※ 구매하신 분에게는 확인 문자를 전송해 드립니다.',
+    class: selectItems,
+  },
+  {
+    id: 'tab2',
+    title: '가까운 검사소를 찾기',
+    content: '상단 메뉴',
+    subContent_1: '검사소 찾기',
+    subContent_2: '를 선택하세요.',
+    subContent: '※ 우편번호(Zip Code)를 입력하세요.',
+    class: searchOffice,
+  },
+  {
+    id: 'tab3',
+    title: '검사소 방문하기',
+    content: '검사소 방문 전 안내문자를 꼭 확인하세요.',
+    subContent: '※ 예약 없이도 방문이 가능합니다.',
+    class: visitOffice,
+  },
+  {
+    id: 'tab4',
+    title: '검사 리포트 확인하기',
+    content: '마이페이지에서 검진 결과를\n확인하실 수 있습니다.',
+    subContent: '※ 검사 결과 발행 안내 문자를 보내드립니다.',
+    class: selectItems,
+  },
+]
+---
+
+<section w-w="full" w-h="min-full">
+  <div
+    class="wrapper"
+    w-flex="~ col"
+    w-p="x-200px t-150px b-50px <xl:x-10 <md:t-100px"
+    w-m="x-auto"
+    w-container="~"
+    w-w="md:96rem"
+    w-h="md:full <md:min-full"
+  >
+    <ul
+      class="scroll"
+      w-whitespace="nowrap"
+      w-text="1.5rem center"
+      w-pos="relative"
+      w-p="y-2"
+      w-overflow="hidden <md:x-auto"
+    >
+      {menu.map((data, idx) => (
+        <li
+          class="tab_bar"
+          data-tab={data.dataTab}
+          w-p="b-2"
+          w-w="1/4 <md:2/4"
+          w-display="inline-block"
+          w-text="1.5rem <lg:1rem"
+          w-cursor="pointer"
+          w-transition="duration-100"
+        >
+          <span
+            w-font="italic"
+            w-m="r-2"
+            w-text="1.563rem <lg:1rem"
+            w-pointer="none"
+          >
+            {idx + 1 + '.'}
+          </span>
+          {data.name}
+        </li>
+      ))}
+      <hr w-pos="absolute bottom-1 left-0 right-0" w-w="full <md:168vw" />
+      <div
+        class="slider"
+        w-pos="absolute bottom-0 left-0"
+        w-w="1/4 <md:1/2"
+        w-h="1"
+        w-bg="black"
+      >
+      </div>
+    </ul>
+    <div w-w="full" w-flex="grow-1" w-overflow="hidden">
+      <ul
+        class="tab_slider"
+        w-m="t-30px <md:t-20px"
+        w-w="full"
+        w-pos="relative"
+        w-flex="~"
+        w-z="1"
+        w-whitespace="nowrap"
+      >
+        {menualList.map((data, idx) => (
+          <li
+            id={data.id}
+            class="tab_content"
+            w-flex="~ <md:col shrink-0"
+            w-justify="between"
+            w-pos="relative"
+            w-w="full"
+            w-h="full"
+          >
+            <div>
+              <p
+                class="fade-in-box "
+                w-text="3.75rem [#CCCCCC] <lg:2rem"
+                w-font="italic bold"
+                w-m="b-30px"
+              >
+                Step {idx + 1 + '.'}
+              </p>
+              <p w-text="3.375rem <lg:1.75rem" w-font="bold">
+                {data.title}
+              </p>
+              <div
+                w-flex="~"
+                w-text="2.125rem <lg:1.125rem"
+                w-m="b-50px"
+                w-h="120px <md:40px"
+                w-whitespace="pre-line"
+                w-font="!leading-[1.2]"
+              >
+                {data.content}
+                <span w-text="[#E64747]" w-font="bold">
+                  {data.subContent_1}
+                </span>
+                {data.subContent_2}
+              </div>
+              <p w-text="1.563rem <lg:0.75rem" w-m="b-30px">
+                {data.subContent}
+              </p>
+              <button
+                w-text="1.25rem [#707070]  <lg:0.75rem"
+                w-border="1px [#707070] rounded-3xl"
+                w-p="x-6 y-2"
+              >
+                자세히 보기
+              </button>
+            </div>
+            <div
+              w-m="t-24px md:t-10px <md:x-auto"
+              w-w="3/10 <md:full"
+              w-h="md:full"
+              w-p="<md:x-10 <md:b-50px"
+              w-z="-1"
+            >
+              <video
+                class="video_background"
+                src={data.class}
+                muted
+                loop
+                w-object="cotain"
+                w-w="full"
+                w-h="full"
+              ></video>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+<script>
+  const slideBar = document.querySelector('.slider')
+  const tabBar = document.querySelectorAll('.tab_bar')
+  const tabSlider = document.querySelector('.tab_slider')
+  const scrolls = document.querySelector('.scroll')
+
+  const mediaQuery = window.matchMedia('(max-width: 768px)')
+
+  const video = document.querySelectorAll('.video_background')
+
+  let latestIndex = 0
+
+  tabBar.forEach((el, idx) => {
+    el.onclick = () => {
+      scrolls.scroll({
+        left:
+          latestIndex < idx
+            ? el.offsetLeft
+            : tabBar[Math.max(idx - 1, 0)].offsetLeft,
+        behavior: 'smooth',
+      })
+      latestIndex = idx
+      slideBar.style.left = `${idx * (mediaQuery.matches ? 50 : 25)}%`
+      tabSlider.style.transform = `translateX(${idx * -100}%)`
+    }
+  })
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const el = entry.target
+        if (entry.isIntersecting) {
+          setTimeout(() => el.play(), 1000)
+        } else {
+          el.pause()
+          el.currentTime = 0
+        }
+      })
+    },
+    {
+      threshold: 0.1,
+      root: null,
+    }
+  )
+  video.forEach((el) => observer.observe(el))
+</script>
+
+<style>
+  .tab_slider {
+    transition: 0.3s ease-out;
+    transform: translateX(0%);
+  }
+  .tab_content {
+    transition: 0.5s ease;
+  }
+  .slider {
+    left: 0vw;
+    transition: 0.3s ease-out;
+  }
+</style>

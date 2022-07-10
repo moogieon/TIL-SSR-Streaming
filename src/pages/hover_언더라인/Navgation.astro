@@ -1,0 +1,108 @@
+---
+const menu = [
+  {
+    name: 'Login',
+    href: '#tech',
+  },
+  {
+    name: 'Join us',
+    href: '#people',
+  },
+  {
+    name: 'Welpoint',
+    className: 'text-wcgreen',
+    href: 'https://www.welcoach.com',
+  },
+]
+---
+
+<nav>
+  <button
+    w-pos="relative"
+    w-z="30"
+    w-display="hidden <md:block"
+    class="nav-icon"
+  >
+    <i class="bi bi-list" w-text="5xl"></i>
+  </button>
+  <div
+    class="nav-menu"
+    w-pos="<md:fixed <md:inset-0 right-20"
+    w-flex="~ <md:col"
+    w-justify="<md:end"
+    w-poiter="none"
+    w-transition="duration-300"
+  >
+    <ul
+      w-p="<md:x-1/20 <md:t-85px"
+      w-flex="~ <md:col"
+      w-pos="<md:absolute <md:inset-0 <md:left-4/10"
+    >
+      {menu.map((data) => (
+        <li
+          w-m="x-5 <md:y-10"
+          w-p="y-2 "
+          w-cursor="pointer"
+          w-display="block"
+          w-pos="relative"
+          class={`hover-underline-animation ${data.className ?? ''}`}
+        >
+          <a w-text="20px space-nowrap" href={data.href}>
+            {data.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .hover-underline-animation:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #000000;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+
+  .hover-underline-animation:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+  .nav-icon {
+    transition: all 0.3s linear;
+  }
+
+  .nav-icon.active {
+    transform: rotate(180deg);
+    transition: all 0.3s linear;
+  }
+  .nav-menu {
+    z-index: 10;
+  }
+
+  @media (max-width: 767.9px) {
+    .nav-menu {
+      pointer-events: none;
+    }
+    .nav-menu.active {
+      pointer-events: initial;
+    }
+    .nav-menu ul {
+      transform: translateX(100vw);
+      background-color: #fbfbfb;
+      opacity: 0.9;
+      box-shadow: 0px 3px 6px #00000029;
+      transition: transform 0.3s ease-in-out;
+    }
+    .nav-menu.active ul {
+      transform: translateX(0);
+      z-index: 20;
+    }
+  }
+</style>
