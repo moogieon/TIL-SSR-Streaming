@@ -1,0 +1,36 @@
+---
+import Logo from '../../../../styles/header/welcoach_logo.png'
+import Navgation from './Navgation.astro'
+---
+
+<header w-pos="fixed inset-0" w-z="10" w-h="85px">
+  <div
+    w-p="<lg:x-1/20"
+    w-m="auto"
+    w-container="~"
+    w-flex="~"
+    w-justify="between"
+    w-items="center "
+    w-overflow="hidden"
+  >
+    <div w-flex="~" w-justify="between" w-container="~" w-z="10">
+      <div w-cursor="pointer" w-flex="~" w-items="center">
+        <img src={Logo} alt="Welcoach Logo" width="85" height="85" />
+        <span w-text="1.5rem" w-m="t-2">영양제 코치 웰코치</span>
+      </div>
+    </div>
+    <Navgation />
+  </div>
+</header>
+<script>
+  const toggleBtn = document.querySelector('.bi-list')
+  const menu = document.querySelector('.nav-menu')
+  const icon = document.querySelector('.nav-icon')
+
+  toggleBtn.addEventListener('click', () => {
+    menu.classList.toggle('active')
+    icon.classList.toggle('active')
+    toggleBtn.classList.toggle('bi-x-lg')
+  })
+  console.log(menu)
+</script>
