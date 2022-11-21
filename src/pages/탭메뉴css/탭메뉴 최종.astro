@@ -1,0 +1,315 @@
+---
+import Buy from '../styles/menual/buy.png'
+import Message from '../styles/menual/message.png'
+import Visit from '../styles/menual/visit.png'
+import Result from '../styles/menual/result.png'
+
+const menualList = [
+  {
+    name: '검진상품<br/><span style="color:#FF5E80">선택 및 구매하기</span>',
+    img: Buy,
+  },
+  {
+    name: '검진 주문서<br/><span style="color:#FF5E80">작성하기</span>',
+    img: Message,
+  },
+  {
+    name: '검사소<br/><span style="color:#FF5E80">방문하기</span><br/><span style="color:#55A252; font-size:0.95rem; font-weight:700 ">(필수 준비물: 신분증, 주문 확인서)</span>',
+    img: Visit,
+  },
+  {
+    name: '검사 결과<br/><span style="color:#FF5E80">확인하기</span>',
+    img: Result,
+  },
+]
+
+const menuDetail = [
+  {
+    title: '검진상품 <span>선택 및 구매하기</span>',
+    list: [
+      '- 관련 증상이나 질환을 참고로 검진 상품을 선택하세요. (예시: 당뇨, 빈혈 등) ',
+      '- 선택한 검진상품의 자세한 내용을 상품 상세페이지에서 확인 후 구매하세요.',
+    ],
+    img: Buy,
+  },
+  {
+    subName: '(휴대폰, e-mail)',
+    title: '검진 주문서 <span>작성하기</span>',
+    list: [
+      '- 구매 후 ‘마이 페이지 > 주문 상세 내역’에서 <span style="font-weight: 700; color: #55A252;">‘검진 주문서’</span>를 작성해 주세요.<br class="br_tag_reverse"/> <span style=" color: #55A252;font-weight: 700;">(*검사 전 ‘검진 주문서’ 필수 제출)</span> ',
+      '- ‘검진 주문서’ 처리는 영업일 기준 약 <span style="font-weight: 700; color: #55A252;">3일</span> 정도 소요되며 정상적으로 주문이 처리된 경우, 이메일 및 문자메시지 (MMS)로 <span style="font-weight: 700;">‘주문 확인서’</span>와 함께 안내 메시지를 발송해 드립니다. ',
+    ],
+    img: Message,
+  },
+  {
+    title: '검사소 <span>방문하기</span>',
+    subtitle: '(*필수 준비물: 신분증, 주문 확인서)',
+    list: [
+      '- 검사소 방문 전 <웰코치샵> 상단 <span style="font-weight: 700; color: #55A252;">‘랩콥 검사소 찾기’</span> 메뉴에서 희망하는 검사소 위치 및 운영시간을 미리 확인 후<br class="br_tag"/> 원하는 날짜, 시간에 자유롭게 랩콥 검사소에 방문하면 기다리지 않고 검사를 받을 수 있습니다.<br/>(단, 예약을 원하는 경우, <span style="font-weight: 700;">랩콥 예약페이지</span> <a style=" text-decoration:underline; font-weight: 700; "rel="noopener noreferrer" target="_blank" href="https://www.labcorp.com/labs-and-appointments">(바로가기)</a>에서 개별 예약이 가능합니다.)',
+      '- <span style="font-weight: 700; color: #55A252;">신분증(ID Card, Driver\'s License) 및 주문 확인서</span>를 준비하여 검사소에 방문 후 랩콥 검사소 안내에 따라 채혈 후 귀가하면 됩니다. <br/>(*주문 확인서는 출력하여 가져가는 것을 권장해 드립니다.) ',
+    ],
+    img: Visit,
+  },
+  {
+    title: '검사결과 <span>확인하기</span>',
+    list: [
+      '- 검진 결과를 받기까지는 채혈 후 약 <span style=" color: #55A252; font-weight: 700;"> 7~10일</span> 정도 소요되며 결과 리포트가 발행되면 이메일 및 문자 메시지(MMS)로 안내해 드립니다.<br />(랩콥 리포트: 약 7일 소요, 웰코치 리포트: 약 10일 소요 예정)',
+      '- 리포트 결과를 참고하여 <웰코치샵>에서 맞춤 영양관리를 시작해보세요.',
+    ],
+    img: Result,
+  },
+]
+---
+
+<section w-flex="~ col" w-items="between" w-w="full" w-h="full">
+  <div
+    w-p="x-5 <md:x-10"
+    w-m="x-auto"
+    w-container="~"
+    w-h="auto"
+    w-z="40"
+    w-justify="<md:center"
+    w-display="<md:hidden"
+  >
+    <div w-m="x-auto" w-h="full" w-p="b-5">
+      <ol
+        class="menu-wrap"
+        w-grid="~ cols-4"
+        w-gap="25 <xl:10 <lg:5 "
+        w-p="t-10 b-5"
+        w-h="auto"
+      >
+        {menualList.map((menu, idx) => (
+          <li
+            class="out"
+            w-cursor="pointer"
+            w-flex="~ col"
+            w-items="center"
+            w-h="max-269px min-230px"
+            w-w=""
+            w-transition="~ duration-100"
+            w-shadow="custom"
+            w-p="x-0.5rem t-5 b-2"
+          >
+            <div w-flex="~ col" w-items="center" w-gap="5">
+              <img
+                src={menu.img}
+                w-h="70px"
+                w-p="x-10 <2xl:x-12 <2xl:y-2 <xl:x-10 <lg:x-8"
+                alt={menu.name}
+              />
+              <p w-text="[#6E6E6E] 1.563rem <lg:1.125rem">Step {idx + 1}.</p>
+            </div>
+            <p
+              w-text="1.25rem center  <lg:1rem"
+              w-font="medium !leading-[1.3]"
+              w-h="full"
+              w-m="t-5"
+              set:html={menu.name}
+            ></p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+  <div
+    w-bg="[#F7F7F780] <md:white"
+    w-w="full"
+    w-h="full"
+    w-p="t-10 x-5 <md:x-2"
+    w-transition="duration-300"
+  >
+    <div
+      w-m="x-auto "
+      w-container="~"
+      w-h="full"
+      w-pos="relative"
+      w-p="b-20 <md:x-5"
+      w-transition="duration-300"
+    >
+      <ol
+        class="detail-wrap"
+        w-flex="~ col"
+        w-h="md:max-900px full"
+        w-justify="md:between"
+        w-transition="duration-300"
+      >
+        {menuDetail.map((detail, i) => (
+          <li
+            w-flex="md:~"
+            w-items="md:center"
+            w-h="auto"
+            w-m="b-5"
+            w-p="md:y-2"
+          >
+            <div
+              w-display="<md:hidden"
+              w-text="2.5rem [#6E6E6E]"
+              w-w="min-26px"
+              w-transition="duration-100"
+            >
+              {i + 1}
+            </div>
+            <div
+              w-flex="~"
+              w-display="<md:hidden "
+              w-border="1px [#6E6E6E] rounded-xl"
+              w-h="full"
+              w-m="x-10"
+              w-transition="duration-100"
+            />
+            <div class="accordion" w-flex="~ col" w-gap="4 <md:0.5">
+              <p w-display="md:hidden" w-text="[#6E6E6E] 1.25rem" w-m="b-2">
+                Step <span w-font="medium">{i + 1}.</span>
+              </p>
+              <div
+                w-text="1.438rem <md:1rem"
+                w-font="bold"
+                w-p="x-2 <md:y-4 <md:x-5"
+                w-border=""
+                w-shadow="<md:custom"
+                w-flex="~"
+                w-justify="<md:between"
+                w-gap="md:2"
+                w-items="center"
+                w-cursor="pointer"
+              >
+                <div
+                  w-h="full"
+                  w-flex="~ <md:col"
+                  w-justify="end"
+                  w-pos="relative"
+                >
+                  <p set:html={detail.title} class="title"></p>
+                </div>
+
+                <img
+                  src={detail.img}
+                  w-h="48px"
+                  w-w="48px"
+                  w-display="md:hidden"
+                  alt={detail.title}
+                />
+              </div>
+              <div w-pos="relative" w-overflow="hidden">
+                <div
+                  class="accordion_menu"
+                  w-h="<md:0"
+                  w-text="left"
+                  w-font="!leading-[1.0]"
+                  w-transition="all duration-300"
+                  w-overflow="hidden"
+                >
+                  <ul
+                    w-transform="<md:~ <md:-translate-y-full"
+                    w-duration="300"
+                    w-z="-1"
+                    w-opacity="<md:0"
+                  >
+                    {detail.list.map((list) => (
+                      <li
+                        w-flex="~"
+                        w-p="<xl:r-10 <md:x-3 <md:y-2"
+                        w-transition="duration-100"
+                        w-h="auto"
+                        w-w="auto <md:full"
+                        w-bg="<md:[#F7F7F7]"
+                        w-text="left <md:0.688rem "
+                        w-Listings="disc"
+                      >
+                        <p
+                          set:html={list}
+                          w-whitespace="pre-line"
+                          w-font="!leading-[1.8]"
+                          w-text="left 1rem <md:0.9rem"
+                          w-w="auto <md:full"
+                          w-transition="~"
+                          w-duration="100"
+                          w-p="l-1.5rem"
+                          w-indent="-xs"
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>
+<script>
+  const menuWrap = document.querySelector('.menu-wrap')
+  const detailWrap = document.querySelector('.detail-wrap')
+  const accordion = document.querySelectorAll('.accordion')
+  const accordionMenu = document.querySelectorAll('.accordion_menu')
+  // const selectMenu = (ulEl, liEl) => {
+  //   for (const li of ulEl.children) {
+  //     li.classList.remove('selected')
+  //   }
+  //   if (liEl) liEl.classList.add('selected')
+  // }
+
+  // menuWrap.addEventListener('click', (e) => {
+  //   const selected = e.target
+  //   selectMenu(menuWrap, selected)
+  //   const parentChildren = Array.from(selected.parentElement.children)
+  //   const index = parentChildren.indexOf(selected)
+  //   for (const li of detailWrap.children) {
+  //     li.classList.remove('selected-detail')
+  //   }
+  //   if (parentChildren)
+  //     detailWrap.children[index].classList.add('selected-detail')
+  // })
+
+  accordion.forEach((res, idx) => {
+    res.addEventListener('click', () => {
+      const menuEl = accordionMenu[idx]
+      menuEl.classList.toggle('active')
+      menuEl.style.height = menuEl.style.height
+        ? ''
+        : menuEl.querySelector('ul')?.clientHeight + 'px'
+    })
+  })
+</script>
+
+<style>
+  .out:hover {
+    outline: 3px solid #33333399;
+    outline-offset: -3px;
+  }
+
+  .menu-wrap li > * {
+    pointer-events: none;
+  }
+
+  .menu-wrap li.selected {
+    outline: 3px solid #33333399;
+    outline-offset: -3px;
+  }
+
+  .selected-detail div:nth-child(1) {
+    color: black;
+  }
+
+  .selected-detail div:nth-child(2) {
+  }
+
+  .selected-detail ul li {
+    color: black;
+    font-weight: 600;
+  }
+
+  @media (max-width: 767.9px) {
+    .selected-detail ul li {
+      color: black;
+      font-weight: 400;
+    }
+  }
+  .accordion_menu.active ul {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+  }
+</style>
